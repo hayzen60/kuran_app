@@ -1,5 +1,4 @@
-from flask import Flask, request, send_from_directory
-from flask import Flask, request
+from flask import Flask, request, render_template
 import requests
 
 app = Flask(__name__)
@@ -14,64 +13,9 @@ sureler = {
     "nas": 114
 }
 
-@app.route("/manifest.json")
-def manifest():
-    return send_from_directory(".", "manifest.json")
-
 @app.route("/")
 def home():
-    return """
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#2e7d32">
-<link rel="manifest" href="/manifest.json">
-<style>
-body {
-    font-family: Arial;
-    background-color: #f2f2f2;
-    padding: 20px;
-    text-align: center;
-}
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-input {
-    width: 80%;
-    padding: 12px;
-    margin-top: 10px;
-    font-size: 16px;
-}
-button {
-    padding: 12px 20px;
-    margin-top: 10px;
-    font-size: 16px;
-    background: #2e7d32;
-    color: white;
-    border: none;
-    border-radius: 6px;
-}
-</style>
-</head>
-<body>
-
-<div class="card">
-    <h2>📖 Kuran Uygulaması</h2>
-    <form action="/sure">
-        <input name="query" placeholder="Sure adı veya numarası">
-        <br>
-        <button type="submit">Ara</button>
-    </form>
-    <p>Örnek: yasin, rahman, 1</p>
-</div>
-
-</body>
-</html>
-"""
+    return render_template("home.html")
 
 @app.route("/sure")
 def get_sure():
@@ -109,69 +53,14 @@ def get_sure():
 
     audio_url = f"https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/{sure_id}.mp3"
 
-    result = f"""
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {{
-    font-family: Arial;
-    background-color: #f2f2f2;
-    padding: 15px;
-}}
-.card {{
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}}
-.arabic {{
-    font-size: 26px;
-    text-align: right;
-    line-height: 2;
-}}
-.translit {{
-    font-size: 18px;
-    font-style: italic;
-    line-height: 1.8;
-}}
-.meal {{
-    font-size: 18px;
-    line-height: 1.8;
-}}
-audio {{
-    width: 100%;
-}}
-</style>
-</head>
-<body>
-
-<div class="card">
-<h2>{sure_adi} Suresi</h2>
-
-<h3>Dinle</h3>
-<audio controls>
-    <source src="{audio_url}" type="audio/mpeg">
-</audio>
-
-<h3>Arapça</h3>
-<p class="arabic">{arabic_text}</p>
-
-<h3>Okunuş</h3>
-<p class="translit">{translit_text}</p>
-
-<h3>Türkçe Meal</h3>
-<p class="meal">{turkish_text}</p>
-
-</div>
-</body>
-</html>
-"""
-
-    return result
+    return render_template(
+        "sure.html",
+        sure_adi=sure_adi,
+        arabic_text=arabic_text,
+        translit_text=translit_text,
+        turkish_text=turkish_text,
+        audio_url=audio_url
+    )
 
 if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(debug=True)

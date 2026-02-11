@@ -1,0 +1,41 @@
+body {
+    font-family: Arial;
+    background: #f2f2f2;
+    padding: 15px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.toggle {
+    text-align: left;
+}
+
+.content {
+    display: none;
+    margin-top: 10px;
+}
+
+.arabic {
+    font-size: 24px;
+    text-align: right;
+    line-height: 2;
+}
