@@ -39,3 +39,65 @@ button {
     text-align: right;
     line-height: 2;
 }
+
+/* Loading Screen */
+
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 5px solid #ddd;
+    border-top: 5px solid #2e7d32;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55px;
+    background: #2e7d32;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.topbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    margin-right: 15px;
+}
+
+.topbar-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Sayfa içeriğini aşağı kaydır */
+.content-wrapper {
+    margin-top: 65px;
+}
