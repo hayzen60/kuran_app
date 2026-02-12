@@ -20,32 +20,32 @@
 <div class="content-wrapper">
 
 <div class="card">
-
-<h2>{{ sure_adi }}</h2>
-
-<audio controls style="width:100%">
-  <source src="{{ audio_url }}">
-</audio>
-
-<button class="toggle" onclick="toggleSection('arabic')">
-📖 Arapça
-</button>
-<div id="arabic" class="content">
-<p class="arabic">{{ arabic_text }}</p>
+    <audio controls style="width:100%">
+        <source src="{{ audio_url }}">
+    </audio>
 </div>
 
-<button class="toggle" onclick="toggleSection('translit')">
-🔤 Okunuş
-</button>
-<div id="translit" class="content">
-<p>{{ translit_text }}</p>
+<div class="card">
+    <button onclick="toggleSection('arabic')">📖 Arapça</button>
+    <div id="arabic" class="content">
+        <p class="arabic">{{ arabic_text }}</p>
+    </div>
 </div>
 
-<button class="toggle" onclick="toggleSection('meal')">
-🇹🇷 Meal
-</button>
-<div id="meal" class="content">
-<p>{{ turkish_text }}</p>
+<div class="card">
+    <button onclick="toggleSection('translit')">🔤 Okunuş</button>
+    <div id="translit" class="content">
+        <p>{{ translit_text }}</p>
+    </div>
+</div>
+
+<div class="card">
+    <button onclick="toggleSection('meal')">Türkçe Meal</button>
+    <div id="meal" class="content">
+        <p class="meal">{{ turkish_text }}</p>
+    </div>
+</div>
+
 </div>
 
 </body>
