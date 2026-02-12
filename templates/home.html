@@ -6,9 +6,9 @@
 </head>
 <body>
 
-<div id="loading">
-    <div class="spinner"></div>
-    <p>Yükleniyor...</p>
+<div class="card">
+    <h3>📖 Son Okunan</h3>
+    <div id="lastReadSection"></div>
 </div>
 
 <div class="card">
@@ -19,6 +19,10 @@
         <button type="submit">Ara</button>
     </form>
 
+<div class="card">
+    <h3>⭐ Favorilerim</h3>
+    <div id="favoritesList"></div>
+</div>
 
 </div>
 
@@ -43,6 +47,8 @@ function showLoading() {
     }
 }
 </script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>

@@ -12,17 +12,12 @@
     <div class="topbar-title">{{ sure_adi }}</div>
 </div>
 
-<div id="loading">
-    <div class="spinner"></div>
-    <p>Yükleniyor...</p>
-</div>
-
 <div class="content-wrapper">
 
 <div class="card">
-    <button onclick="toggleFavorite('{{ sure_adi }}')">
+    <button onclick="toggleFavorite('{{ request.args.get('query') }}')">
         ⭐ Favorilere Ekle / Kaldır
-    </button>
+    </button>    
 </div>
 
 <div class="card">
@@ -53,6 +48,10 @@
 </div>
 
 </div>
+
+<script>
+saveLastRead("{{ request.args.get('query') }}");
+</script>
 
 </body>
 </html>
