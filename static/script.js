@@ -120,3 +120,11 @@ function openTab(tabName) {
     document.getElementById(tabName).classList.add("active");
     event.currentTarget.classList.add("active");
 }
+
+function goBack() {
+    if (document.referrer && document.referrer !== "") {
+        window.history.back();
+    } else {
+        window.location.href = "/";
+    }
+}

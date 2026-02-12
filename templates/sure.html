@@ -8,20 +8,33 @@
 <body>
 
 <div class="topbar">
-    <a href="/">←</a>
-    <div class="topbar-title">{{ sure_adi }}</div>
+    <div class="topbar-left">
+        <button class="back-btn" onclick="goBack()">←</button>
+    </div>
+
+    <div class="topbar-title">
+        {{ sure_adi }}
+    </div>
+
+    <div class="topbar-right"></div>
 </div>
+
+{% if is_offline %}
+<div class="offline-banner">
+    Çevrimdışı moddasınız. İçerik yüklenemedi.
+</div>
+{% endif %}
 
 <div class="content-wrapper">
 
-<div class="card">
-    <button onclick="toggleTheme()">🌙 Tema Değiştir</button>
-</div>
+<div class="action-bar">
+    <button class="icon-btn" onclick="toggleFavorite('{{ request.args.get('query') }}')">
+        ⭐
+    </button>
 
-<div class="card">
-    <button onclick="toggleFavorite('{{ request.args.get('query') }}')">
-        ⭐ Favorilere Ekle / Kaldır
-    </button>    
+    <button class="icon-btn" onclick="toggleTheme()">
+        🌙
+    </button>
 </div>
 
 <div class="card">
