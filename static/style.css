@@ -39,6 +39,11 @@ button {
     line-height: 1.7;
 }
 
+.content {
+    display: none;
+    margin-top: 10px;
+}
+
 /* Loading Screen */
 
 #loading {

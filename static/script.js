@@ -6,3 +6,11 @@ function toggleSection(id) {
         el.style.display = "block";
     }
 }
+
+// Sayfa açıldığında Arapça otomatik açık olsun
+window.addEventListener("DOMContentLoaded", function() {
+    var arabic = document.getElementById("arabic");
+    if (arabic) {
+        arabic.style.display = "block";
+    }
+});
