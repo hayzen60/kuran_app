@@ -104,3 +104,19 @@ function toggleTheme() {
         localStorage.setItem("theme", "light");
     }
 }
+
+function openTab(tabName) {
+    var contents = document.getElementsByClassName("tab-content");
+    var buttons = document.getElementsByClassName("tab-button");
+
+    for (var i = 0; i < contents.length; i++) {
+        contents[i].classList.remove("active");
+    }
+
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+
+    document.getElementById(tabName).classList.add("active");
+    event.currentTarget.classList.add("active");
+}

@@ -31,24 +31,23 @@
 </div>
 
 <div class="card">
-    <button onclick="toggleSection('arabic')">📖 Arapça</button>
-    <div id="arabic" class="content">
-        <p class="arabic">{{ arabic_text }}</p>
-    </div>
+
+<div class="tabs">
+    <button class="tab-button active" onclick="openTab('arabic')">Arapça</button>
+    <button class="tab-button" onclick="openTab('translit')">Okunuş</button>
+    <button class="tab-button" onclick="openTab('meal')">Meal</button>
 </div>
 
-<div class="card">
-    <button onclick="toggleSection('translit')">🔤 Okunuş</button>
-    <div id="translit" class="content">
-        <p>{{ translit_text }}</p>
-    </div>
+<div id="arabic" class="tab-content active">
+    <p class="arabic">{{ arabic_text }}</p>
 </div>
 
-<div class="card">
-    <button onclick="toggleSection('meal')">Türkçe Meal</button>
-    <div id="meal" class="content">
-        <p class="meal">{{ turkish_text }}</p>
-    </div>
+<div id="translit" class="tab-content">
+    <p>{{ translit_text }}</p>
+</div>
+
+<div id="meal" class="tab-content">
+    <p class="meal">{{ turkish_text }}</p>
 </div>
 
 </div>

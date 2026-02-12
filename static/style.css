@@ -126,3 +126,35 @@ body.dark input {
     color: white;
     border: 1px solid #444;
 }
+
+/* Tab Menü */
+
+.tabs {
+    display: flex;
+    margin-top: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    border-bottom: 3px solid #2e7d32;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.tab-content {
+    display: none;
+    margin-top: 15px;
+}
+
+.tab-content.active {
+    display: block;
+}
