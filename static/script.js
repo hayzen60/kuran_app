@@ -14,3 +14,17 @@ window.addEventListener("DOMContentLoaded", function() {
         arabic.style.display = "block";
     }
 });
+
+function toggleFavorite(sureName) {
+    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (favs.includes(sureName)) {
+        favs = favs.filter(s => s !== sureName);
+        alert("Favorilerden kaldırıldı");
+    } else {
+        favs.push(sureName);
+        alert("Favorilere eklendi");
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favs));
+}
