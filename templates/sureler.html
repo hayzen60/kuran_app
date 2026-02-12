@@ -14,18 +14,48 @@
 <div class="content-wrapper">
 
 <div class="card">
+<input 
+    type="text" 
+    id="sureSearch" 
+    placeholder="Sure ara..." 
+    class="search-box"
+    onkeyup="filterSureList()"
+>
+
     <h3>Tüm Sureler</h3>
 
-    {% for numara, isim in sureler.items() %}
-        <button style="margin-top:8px;"
-                onclick="window.location.href='/sure?query={{ numara }}'">
-            {{ numara }} - {{ isim }}
-        </button>
-    {% endfor %}
+    <div id="sureList">
+{% for numara, isim in sureler.items() %}
+    <button class="sure-item"
+            style="margin-top:8px;"
+            onclick="window.location.href='/sure?query={{ numara }}'">
+        {{ numara }} - {{ isim }}
+    </button>
+{% endfor %}
+</div>
+
 
 </div>
 
 </div>
+
+<script>
+function filterSureList() {
+    var input = document.getElementById("sureSearch");
+    var filter = input.value.toLowerCase();
+    var list = document.getElementById("sureList");
+    var items = list.getElementsByClassName("sure-item");
+
+    for (var i = 0; i < items.length; i++) {
+        var text = items[i].textContent.toLowerCase();
+        if (text.includes(filter)) {
+            items[i].style.display = "";
+        } else {
+            items[i].style.display = "none";
+        }
+    }
+}
+</script>
 
 </body>
 </html>
