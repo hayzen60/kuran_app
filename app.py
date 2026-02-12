@@ -46,28 +46,17 @@ def sure():
 
     query = str(query).strip()
 
-    # Sure adı offline JSON'dan
-    if query in SURELER:
-        sure_name = SURELER[query]["name"]
-    else:
+    # JSON'da sure var mı?
+    if query not in SURELER:
         return f"Sure bulunamadı: {query}"
 
-    # Eğer JSON'da tam metin varsa → offline kullan
-    if "arabic" in SURELER[query]:
-        sure_data = SURELER[query]
+    sure_name = SURELER[query]["name"]
 
-    return render_template(
-        "sure.html",
-        sure_adi=sure_name,
-        arabic_text=arabic_text,
-        translit_text=translit_text,
-        turkish_text=turkish_text,
-        audio_url=audio_url,
-        is_offline=is_offline
-    )
-
-    # Yoksa API'den çek (online)
-    # Önce offline durumunu varsayılan yap
+    # Değişkenleri BAŞTA tanımla (çok önemli)
+    arabic_text = ""
+    turkish_text = ""
+    translit_text = ""
+    audio_url = None
     is_offline = False
 
     try:
@@ -87,12 +76,7 @@ def sure():
 
     except:
         arabic_text = "İnternet bağlantısı yok"
-        turkish_text = ""
-        translit_text = ""
-        audio_url = None
         is_offline = True
-
-
 
     return render_template(
         "sure.html",
@@ -100,7 +84,8 @@ def sure():
         arabic_text=arabic_text,
         translit_text=translit_text,
         turkish_text=turkish_text,
-        audio_url=audio_url
+        audio_url=audio_url,
+        is_offline=is_offline
     )
 
 import os
