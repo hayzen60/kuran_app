@@ -4,18 +4,30 @@ import requests
 app = Flask(__name__)
 
 sureler = {
-    "fatiha": 1,
-    "bakara": 2,
-    "yasin": 36,
-    "rahman": 55,
-    "mulk": 67,
-    "nebe": 78,
-    "nas": 114
+    "1": "Fatiha",
+    "2": "Bakara",
+    "3": "Ali İmran",
+    "4": "Nisa",
+    "5": "Maide",
+    "6": "Enam",
+    "7": "Araf",
+    "8": "Enfal",
+    "9": "Tevbe",
+    "10": "Yunus",
+    "36": "Yasin",
+    "55": "Rahman",
+    "67": "Mülk",
+    "78": "Nebe",
+    "114": "Nas"
 }
 
 @app.route("/")
 def home():
     return render_template("home.html")
+
+@app.route("/sureler")
+def sure_listesi():
+    return render_template("sureler.html", sureler=sureler)
 
 @app.route("/sure")
 def get_sure():

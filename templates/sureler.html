@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sureler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="topbar">
+    <a href="/">←</a>
+    <div class="topbar-title">Sureler</div>
+</div>
+
+<div class="content-wrapper">
+
+<div class="card">
+    <h3>Tüm Sureler</h3>
+
+    {% for numara, isim in sureler.items() %}
+        <button style="margin-top:8px;"
+                onclick="window.location.href='/sure?query={{ numara }}'">
+            {{ numara }} - {{ isim }}
+        </button>
+    {% endfor %}
+
+</div>
+
+</div>
+
+</body>
+</html>
