@@ -95,3 +95,34 @@ button {
     border: 1px solid #ccc;
     margin-top: 10px;
 }
+
+/* Dark Mode */
+
+body.dark {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+body.dark .card {
+    background: #1e1e1e;
+    box-shadow: none;
+}
+
+body.dark .app-header {
+    background: #1b5e20;
+}
+
+body.dark .topbar {
+    background: #1b5e20;
+}
+
+body.dark button {
+    background: #2e7d32;
+    color: white;
+}
+
+body.dark input {
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid #444;
+}
